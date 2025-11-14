@@ -4,8 +4,11 @@ from bs4 import BeautifulSoup
 import re
 import csv
 import uuid
+from dotenv import load_dotenv
+import os
 import time
 
+load_dotenv()
 
 def debug(msg: str):
     print(f"[DEBUG] {msg}")
@@ -15,7 +18,7 @@ def debug(msg: str):
 def search_web(niche: str):
     debug(f"search_web() called with niche = {niche}")
 
-    api_key = "63950122c7fb8a9a2438e6f6e43f219bf87d5e35ef7b3c7b4b61c5aaaa0351ab"
+    api_key = os.getenv("SERPER_API")
     params = {
         "q": niche,
         "engine": "google",
