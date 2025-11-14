@@ -5,7 +5,6 @@ from connection import config
 
 from agent.orchestator_Agent import orchestrator_agent
 from agent.search_agent import search_agent
-from agent.scraper_agent import scraper_agent
 from agent.validator_agent import validator_agent
 from agent.csv_agent import csv_agent
 
@@ -34,19 +33,19 @@ async def main():
     triage_output = await run_agent_stream(orchestrator_agent, niche, "Orchestrator")
 
     # Step 2 — Search Agent fetches business URLs
-    search_output = await run_agent_stream(search_agent, triage_output, "Search Agent")
+    # search_output = await run_agent_stream(search_agent, triage_output, "Search Agent")
 
     # Step 3 — Scraper Agent extracts emails/phones from URLs
-    scraped_output = await run_agent_stream(scraper_agent, search_output, "Scraper Agent")
+    # scraped_output = await run_agent_stream(scraper_agent, search_output, "Scraper Agent")
 
     # Step 4 — Validator cleans the scraped data
-    validated_output = await run_agent_stream(validator_agent, scraped_output, "Validator Agent")
+    # validated_output = await run_agent_stream(validator_agent, scraped_output, "Validator Agent")
 
     # Step 5 — CSV Agent saves the cleaned leads
-    csv_file_output = await run_agent_stream(csv_agent, validated_output, "CSV Agent")
+    # csv_file_output = await run_agent_stream(csv_agent, validated_output, "CSV Agent")
 
-    print("💾 CSV saved at:", csv_file_output)
-
+    # print("💾 CSV saved at:", csv_file_output)
+    print(f"Final Output: {triage_output}")
 
 if __name__ == "__main__":
     asyncio.run(main())
