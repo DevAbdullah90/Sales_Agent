@@ -7,9 +7,11 @@ import re
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
-
+from dotenv import load_dotenv
+import os
+load_dotenv()
 # --------- Config ----------
-API_TOKEN = "apify_api_45bXPtSZEeycjA30BR4oMHVNOELZP308tjTt"
+API_TOKEN = os.getenv("APIFY_API_KEY")
 ACTOR_ID = "compass/crawler-google-places"  # Apify Actor ID
 
 client = ApifyClient(token=API_TOKEN)
