@@ -4,9 +4,9 @@ from openai.types.responses import ResponseTextDeltaEvent
 from connection import config
 
 from agent.orchestator_Agent import orchestrator_agent
-from agent.search_agent import search_agent
-from agent.validator_agent import validator_agent
-from agent.csv_agent import csv_agent
+# from agent.search_agent import search_agent
+# from agent.validator_agent import validator_agent
+# from agent.csv_agent import csv_agent
 
 
 async def run_agent_stream(agent, input_data, agent_name="Agent"):
@@ -27,7 +27,7 @@ async def run_agent_stream(agent, input_data, agent_name="Agent"):
 
 
 async def main():
-    niche = "restaurants in Doha"
+    niche = "clinics in sydney"
 
     # Step 1 — Orchestrator decides the workflow
     triage_output = await run_agent_stream(orchestrator_agent, niche, "Orchestrator")
